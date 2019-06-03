@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Hellper.Alpabet
+﻿namespace Hellper.Alpabet
 {
-    static class Alphabet
+    internal static class Alphabet
     {
         public static readonly string alphabetRuLow = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
         public static readonly string alphabetRuUP = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";

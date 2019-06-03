@@ -1,25 +1,22 @@
 ﻿using Hellper.Alpabet;
 using Hellper.Numbers;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Numerics;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Hellper.Criptografic
 {
-    class CriptoWorker
+    internal class CriptoWorker
     {
-        BigInteger p;
-        BigInteger g;
-        BigInteger x;
-        BigInteger y;
-        BigInteger k;
-        string a;
-        string b;
+        private BigInteger p;
+        private BigInteger g;
+        private BigInteger x;
+        private BigInteger y;
+        private BigInteger k;
+        private string a;
+        private string b;
 
         public BigInteger P { get => p; set => p = value; }
         public BigInteger G { get => g; set => g = value; }
