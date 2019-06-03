@@ -102,7 +102,6 @@ namespace Hellper.Criptografic
             try
             {
                 field = t.GetField(alphabetName);
-
             }
             catch (Exception)
             {
@@ -133,7 +132,6 @@ namespace Hellper.Criptografic
             try
             {
                 field = t.GetField(alphabetName);
-
             }
             catch (Exception)
             {
