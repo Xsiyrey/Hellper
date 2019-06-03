@@ -59,7 +59,12 @@ namespace Hellper.Numbers
             }
             return primitive;
         }
-
+        /// <summary>
+        /// Сheck for primitive root for numbers
+        /// </summary>
+        /// <param name="el"></param>
+        /// <param name="P"></param>
+        /// <returns></returns>
         private static bool IsPrimitiveRoot(BigInteger el, BigInteger P)
         {
             BigInteger sum = 0;
