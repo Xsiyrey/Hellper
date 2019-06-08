@@ -6,9 +6,9 @@ using System.Linq;
 using System.Numerics;
 using System.Reflection;
 
-namespace Hellper.Criptografic
+namespace Hellper.Cryptographic
 {
-    internal class CriptoWorker
+    public class ElGamalWorker
     {
         private BigInteger p;
         private BigInteger g;
@@ -26,13 +26,13 @@ namespace Hellper.Criptografic
         public string A { get => a; set => a = value; }
         public string B { get => b; set => b = value; }
 
-        public CriptoWorker(BigInteger p, BigInteger g, Random random)
+        public ElGamalWorker(BigInteger p, BigInteger g, Random random)
         {
             this.p = p;
             this.g = g;
             GenerateElements(random);
         }
-        public CriptoWorker(int maxValue, Random random)
+        public ElGamalWorker(int maxValue, Random random)
         {
             if (maxValue < 100)
                 maxValue = 100;
@@ -42,7 +42,7 @@ namespace Hellper.Criptografic
             GenerateElements(random);
         }
 
-        public CriptoWorker(BigInteger p, BigInteger g, BigInteger x, BigInteger y, BigInteger k)
+        public ElGamalWorker(BigInteger p, BigInteger g, BigInteger x, BigInteger y, BigInteger k)
         {
             this.p = p;
             this.g = g;
@@ -180,5 +180,19 @@ namespace Hellper.Criptografic
             while (!SimpleNumberWorker.IsMutuallyPrimary(k, p - 1))
                 k = random.Next(2, (int)p - 1);
         }
+
+        //static explicit operator object(object element)
+        //{
+
+        //    return;
+        //}
+        //static implicit operator object(object element)
+        //{
+        //    return;
+        //}
+    }
+    public class BackpackWorker
+    {
+
     }
 }
