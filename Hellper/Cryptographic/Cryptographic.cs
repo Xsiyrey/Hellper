@@ -193,6 +193,12 @@ namespace Hellper.Cryptographic
     }
     public class BackpackWorker
     {
+        BigInteger wigth;
+        BigInteger k;
 
+        public BackpackWorker()
+        {
+
+        }
     }
 }

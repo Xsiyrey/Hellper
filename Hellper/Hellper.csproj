@@ -42,10 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Alphabet.cs" />
-    <Compile Include="Cryptographic.cs" />
+    <Compile Include="Alpabet\Alphabet.cs" />
+    <Compile Include="Cryptographic\Cryptographic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WorkWithNumber.cs" />
+    <Compile Include="Numbers\WorkWithNumber.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

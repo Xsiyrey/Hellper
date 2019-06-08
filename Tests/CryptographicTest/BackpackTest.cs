@@ -1,5 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Hellper.Numbers;
+using System.Numerics;
 
 namespace Tests.CryptographicTest
 {
@@ -7,10 +9,20 @@ namespace Tests.CryptographicTest
     public class BackpackTest
     {
         [TestMethod]
-        public void TestMethod1()//изменить название при добавление теста 
+        public void TestOfSupperUpperElements() 
         {
-            int a = 5 + 4;
-            Assert.AreEqual(a, 10);
+            BigInteger[] bigs = SimpleNumberWorker.SupperUpperElements(5);
+            BigInteger[] mastBe = new BigInteger[] { 2, 3, 6, 12, 24 };
+            bool result = true;
+            for (int i = 0; i < bigs.Length; i++)
+            {
+                if (bigs[i]!=mastBe[i])
+                {
+                    result = false;
+                    break;
+                }
+            }
+            Assert.IsTrue(result);
         }
     }
 }

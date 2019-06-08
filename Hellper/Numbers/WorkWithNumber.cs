@@ -1,15 +1,17 @@
-﻿using System.Numerics;
+﻿using System;
+using System.Linq;
+using System.Numerics;
 
 namespace Hellper.Numbers
 {
-    internal class SimpleNumberWorker
+    public static class SimpleNumberWorker
     {
         /// <summary>
         /// Checking the number for simplicity
         /// </summary>
         /// <param name="num"></param>
         /// <returns></returns>
-        public static bool IsPrime(BigInteger num)
+        public static bool IsPrime(this BigInteger num)
         {
             if (num == null) return false;
             if (num == 2) return true;
@@ -40,7 +42,41 @@ namespace Hellper.Numbers
 
             return true;
         }
+        /// <summary>
+        /// Get array of SupperUpperElements
+        /// </summary>
+        /// <param name="count">count of element</param>
+        /// <returns></returns>
+        public static BigInteger[] SupperUpperElements(int count)
+        {
+            if (count < 1)
+                throw new Exception("Count mast be great then zero");
+            BigInteger[] bigs = new BigInteger[count];
+            BigInteger element = 2;
 
+            for (int i = 0, length = bigs.Length; i < length; i++)
+            {
+                while (bigs.SumOfBigInt() >= element)
+                {
+                    if (element==25)
+                    {
+                        int a = 4;
+                    }
+                    element++;
+                }
+                bigs[i] = element;
+            }
+            return bigs;
+        }
+        public static BigInteger SumOfBigInt(this BigInteger[] bigs)
+        {
+            BigInteger sum = 0;
+            for (int i = 0, length = bigs.Length; i < length; i++)
+            {
+                sum += bigs[i];
+            }
+            return sum;
+        }
         public static BigInteger FindPrimitive(BigInteger P)
         {
             BigInteger primitive = 2;
