@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Hellper.Cryptographic;
 using Hellper.Numbers;
 using System.Numerics;
 
@@ -23,6 +24,12 @@ namespace Tests.CryptographicTest
                 }
             }
             Assert.IsTrue(result);
+        }
+        [TestMethod]
+        public void TestOfCrypto()
+        {
+            BackpackWorker backpack = new BackpackWorker(1239);
+            string shiphr = backpack.Encrypt("АБРАМОВ");
         }
     }
 }

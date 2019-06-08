@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Numerics;
 using System.Reflection;
+using System.Text;
 
 namespace Hellper.Cryptographic
 {
@@ -51,7 +52,7 @@ namespace Hellper.Cryptographic
             this.k = k;
         }
 
-        public void Encript(string message, string alphabetName)
+        public void Encrypt(string message, string alphabetName)
         {
             if (message != null)
             {
@@ -91,7 +92,7 @@ namespace Hellper.Cryptographic
             }
         }
 
-        public string Uncript(string alphabetName)
+        public string UnEncrypt(string alphabetName)
         {
             string str = string.Empty;
             Type t = typeof(Alphabet);
@@ -121,7 +122,7 @@ namespace Hellper.Cryptographic
             return str;
         }
 
-        public string Uncript(string a, string b, string alphabetName)
+        public string Uncrypt(string a, string b, string alphabetName)
         {
             string str = string.Empty;
             Type t = typeof(Alphabet);
@@ -194,11 +195,50 @@ namespace Hellper.Cryptographic
     public class BackpackWorker
     {
         BigInteger wigth;
-        BigInteger k;
+        BigInteger[] k;
+        BigInteger[] openK;
+        BigInteger m;
+        BigInteger n;
+        BigInteger[] c;
 
-        public BackpackWorker()
+        public BackpackWorker(BigInteger wigth)
         {
+            if (wigth < 0)
+                throw new Exception("Wigth mast be grate then zero");
+            this.wigth = wigth;
+            k = SimpleNumberWorker.SupperUpperElements(8);
+            m = k.SumOfBigInt() + 4;
+            n = 2;
+            while (SimpleNumberWorker.IsMutuallyPrimary(n, m))
+                n++;
+            openK = new BigInteger[k.Length];
+            for (int i = 0, length = openK.Length; i < length; i++)
+            {
+                openK[i] = BigInteger.ModPow(k[i] * n, 1, m);
+            }
+        }
 
+        public string Encrypt(string message)
+        {
+            if (message == string.Empty)
+                throw new Exception("Message mast be not empty");
+
+            string[] encriptText = new string[message.Length];
+            c = new BigInteger[message.Length];
+            for (int i = 0, length = message.Length; i < length; i++)
+            {
+                encriptText[i] = Convert.ToString((int)message[i]-848,2).PadRight(8, '0');
+                BigInteger sum = 0;
+                for (int j = 0; j < encriptText[i].Length; j++)
+                {
+                    if (encriptText[i][j]=='1')
+                    {
+                        sum += openK[j];
+                    }
+                }
+                c[i] = sum;
+            }
+            return string.Join(" ", encriptText) + "|" + string.Join(" ",c);
         }
     }
 }
