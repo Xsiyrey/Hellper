@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Tests.CryptographicTest
 {
     [TestClass]
-    public class UnitTest1
+    public class BackpackTest
     {
         [TestMethod]
         public void TestMethod1()
