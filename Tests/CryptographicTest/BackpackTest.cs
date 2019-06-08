@@ -7,7 +7,7 @@ namespace Tests.CryptographicTest
     public class BackpackTest
     {
         [TestMethod]
-        public void TestMethod1()
+        public void TestMethod1()//изменить название при добавление теста
         {
         }
     }
