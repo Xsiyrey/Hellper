@@ -1,10 +1,10 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Tests
+namespace Tests.CryptographicTest
 {
     [TestClass]
-    public class CryptographicTest
+    public class UnitTest1
     {
         [TestMethod]
         public void TestMethod1()
