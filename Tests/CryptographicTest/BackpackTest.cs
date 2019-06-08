@@ -9,6 +9,8 @@ namespace Tests.CryptographicTest
         [TestMethod]
         public void TestMethod1()//изменить название при добавление теста 
         {
+            int a = 5 + 4;
+            Assert.AreEqual(a, 10);
         }
     }
 }
