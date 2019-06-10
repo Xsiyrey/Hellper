@@ -199,6 +199,7 @@ namespace Hellper.Cryptographic
         BigInteger[] openK;
         BigInteger m;
         BigInteger n;
+        BigInteger n1;
         BigInteger[] c;
 
         public BackpackWorker(BigInteger wigth)
@@ -209,6 +210,7 @@ namespace Hellper.Cryptographic
             k = SimpleNumberWorker.SupperUpperElements(8);
             m = k.SumOfBigInt() + 4;
             n = 2;
+            SetN1();
             while (SimpleNumberWorker.IsMutuallyPrimary(n, m))
                 n++;
             openK = new BigInteger[k.Length];
@@ -217,13 +219,14 @@ namespace Hellper.Cryptographic
                 openK[i] = BigInteger.ModPow(k[i] * n, 1, m);
             }
         }
-        public BackpackWorker(BigInteger wigth,BigInteger n,BigInteger m,BigInteger[] k,BigInteger[] openK)
+        public BackpackWorker(BigInteger wigth,BigInteger n,BigInteger n1,BigInteger m,BigInteger[] k,BigInteger[] openK)
         {
             if (k.Length != 8 || openK.Length != 8)
                 throw new Exception("Keys length mast be = 8");
             this.wigth = wigth;
             this.m = m;
             this.n = n;
+            this.n1 = n1;
             this.k = k;
             this.openK = openK;
         }
@@ -249,6 +252,66 @@ namespace Hellper.Cryptographic
                 c[i] = sum;
             }
             return /*string.Join(" ", encriptText) + "|" +*/ string.Join(" ",c);
+        }
+        public string UnEncrypt()
+        {
+            if (c == null)
+                throw new Exception("Encrypt mast not be null");
+            string str = string.Empty;
+            for (int i = 0; i < c.Length; i++)
+            {
+                BigInteger element = BigInteger.ModPow(c[i] * n1, 1, m);
+                char[] binary = new char[8];
+                for (int j = k.Length-1; j >= 0; j--)
+                {
+                    if (element - k[j] >= 0)
+                    {
+                        element -= k[j];
+                        binary[j] = '1';
+                    }
+                    else
+                    {
+                        binary[j] = '0';
+                    }
+                }
+                str += (char)(Convert.ToInt32(string.Join("", binary), 2) + 848);
+            }
+            return str;
+        }
+        public string UnEncrypt(params BigInteger[] bigs)
+        {
+            if (bigs == null)
+                throw new Exception("Encrypt mast not be null");
+            string str = string.Empty;
+            for (int i = 0; i < bigs.Length; i++)
+            {
+                BigInteger element = BigInteger.ModPow(bigs[i] * n1, 1, m);
+                char[] binary = new char[8];
+                for (int j = k.Length - 1; j >= 0; j--)
+                {
+                    if (element - k[j] >= 0)
+                    {
+                        element -= k[j];
+                        binary[j] = '1';
+                    }
+                    else
+                    {
+                        binary[j] = '0';
+                    }
+                }
+                str += (char)(Convert.ToInt32(string.Join("", binary), 2) + 848);
+            }
+            return str;
+        }
+        private void SetN1()
+        {
+            n1 = 0;
+            while (!N1Validate(n1))
+                n1++;
+        }
+        private bool N1Validate(BigInteger n1)
+        {
+            return BigInteger.ModPow(n * n1, 1, m) == 1;
         }
     }
 }
