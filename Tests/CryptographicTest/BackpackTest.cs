@@ -40,7 +40,7 @@ namespace Tests.CryptographicTest
                 "1239",
                 "470",
             };
-            BackpackWorker backpack = new BackpackWorker(270, 31,271, 420, new BigInteger[] { 2, 3, 6, 13, 27, 52, 105, 210 },
+            BackpackWorker backpack = new BackpackWorker(31,271, 420, new BigInteger[] { 2, 3, 6, 13, 27, 52, 105, 210 },
                                                          new BigInteger[] { 62, 93, 186, 403, 417, 352, 315, 210 });
             string[] shiphr = backpack.Encrypt("АБРАМОВ").Split(new char[] { ' ' },
                                                                 StringSplitOptions.RemoveEmptyEntries);
@@ -61,7 +61,7 @@ namespace Tests.CryptographicTest
         public void TestOfUnEncrypt()
         {
             string defaultUnShiphr = "АБРАМОВ";
-            BackpackWorker backpack = new BackpackWorker(270, 31, 271, 420, new BigInteger[] { 2, 3, 6, 13, 27, 52, 105, 210 },
+            BackpackWorker backpack = new BackpackWorker(31, 271, 420, new BigInteger[] { 2, 3, 6, 13, 27, 52, 105, 210 },
                                                          new BigInteger[] { 62, 93, 186, 403, 417, 352, 315, 210 });
             string unShiphr = backpack.UnEncrypt(backpack.Encrypt("АБРАМОВ").Split(new char[] { ' ' },
                 StringSplitOptions.RemoveEmptyEntries).Select(x => new BigInteger(int.Parse(x))).ToArray());
