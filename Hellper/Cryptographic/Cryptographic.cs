@@ -217,6 +217,16 @@ namespace Hellper.Cryptographic
                 openK[i] = BigInteger.ModPow(k[i] * n, 1, m);
             }
         }
+        public BackpackWorker(BigInteger wigth,BigInteger n,BigInteger m,BigInteger[] k,BigInteger[] openK)
+        {
+            if (k.Length != 8 || openK.Length != 8)
+                throw new Exception("Keys length mast be = 8");
+            this.wigth = wigth;
+            this.m = m;
+            this.n = n;
+            this.k = k;
+            this.openK = openK;
+        }
 
         public string Encrypt(string message)
         {
@@ -238,7 +248,7 @@ namespace Hellper.Cryptographic
                 }
                 c[i] = sum;
             }
-            return string.Join(" ", encriptText) + "|" + string.Join(" ",c);
+            return /*string.Join(" ", encriptText) + "|" +*/ string.Join(" ",c);
         }
     }
 }
