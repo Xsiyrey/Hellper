@@ -298,6 +298,10 @@ namespace Hellper.Cryptographic
             }
             return str;
         }
+        public string GetC()
+        {
+            return string.Join(" ", c);
+        }
         private void SetN1()
         {
             n1 = 0;
