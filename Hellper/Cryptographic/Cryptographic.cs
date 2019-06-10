@@ -1,4 +1,4 @@
-﻿using Hellper.Alpabet;
+﻿using Hellper;
 using Hellper.Numbers;
 using System;
 using System.IO;
@@ -58,7 +58,7 @@ namespace Hellper.Cryptographic
             {
                 a = string.Empty;
                 b = string.Empty;
-                Type t = typeof(Alphabet);
+                Type t = typeof(Alphabet.Alphabet);
                 FieldInfo field;
                 try
                 {
@@ -95,7 +95,7 @@ namespace Hellper.Cryptographic
         public string UnEncrypt(string alphabetName)
         {
             string str = string.Empty;
-            Type t = typeof(Alphabet);
+            Type t = typeof(Alphabet.Alphabet);
             FieldInfo field;
             try
             {
@@ -125,7 +125,7 @@ namespace Hellper.Cryptographic
         public string Uncrypt(string a, string b, string alphabetName)
         {
             string str = string.Empty;
-            Type t = typeof(Alphabet);
+            Type t = typeof(Alphabet.Alphabet);
             FieldInfo field;
             try
             {

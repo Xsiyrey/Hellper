@@ -1,6 +1,6 @@
-﻿namespace Hellper.Alpabet
+﻿namespace Hellper.Alphabet
 {
-    internal static class Alphabet
+    public static class Alphabet
     {
         public static readonly string alphabetRuLow = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
         public static readonly string alphabetRuUP = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
