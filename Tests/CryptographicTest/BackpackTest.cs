@@ -28,8 +28,33 @@ namespace Tests.CryptographicTest
         [TestMethod]
         public void TestOfCrypto()
         {
-            BackpackWorker backpack = new BackpackWorker(1239);
-            string shiphr = backpack.Encrypt("АБРАМОВ");
+            bool testStatus = true;
+            string[] defaultShiphr = new string[]
+            {
+                "155",
+                "365",
+                "558",
+                "155",
+                "924",
+                "1239",
+                "470",
+            };
+            BackpackWorker backpack = new BackpackWorker(270, 31, 420, new BigInteger[] { 2, 3, 6, 13, 27, 52, 105, 210 },
+                                                         new BigInteger[] { 62, 93, 186, 403, 417, 352, 315, 210 });
+            string[] shiphr = backpack.Encrypt("АБРАМОВ").Split(new char[] { ' ' },
+                                                                StringSplitOptions.RemoveEmptyEntries);
+            if (shiphr.Length == defaultShiphr.Length)
+                for (int i = 0, length = shiphr.Length; i < length; i++)
+                {
+                    if (shiphr[i] != defaultShiphr[i])
+                    {
+                        testStatus = false;
+                        break;
+                    }
+                }
+            else
+                testStatus = false;
+            Assert.IsTrue(testStatus);
         }
     }
 }
