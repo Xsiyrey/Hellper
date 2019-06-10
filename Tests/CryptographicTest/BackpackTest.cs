@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Hellper.Cryptographic;
 using Hellper.Numbers;
 using System.Numerics;
+using System.Linq;
 
 namespace Tests.CryptographicTest
 {
@@ -39,7 +40,7 @@ namespace Tests.CryptographicTest
                 "1239",
                 "470",
             };
-            BackpackWorker backpack = new BackpackWorker(270, 31, 420, new BigInteger[] { 2, 3, 6, 13, 27, 52, 105, 210 },
+            BackpackWorker backpack = new BackpackWorker(270, 31,271, 420, new BigInteger[] { 2, 3, 6, 13, 27, 52, 105, 210 },
                                                          new BigInteger[] { 62, 93, 186, 403, 417, 352, 315, 210 });
             string[] shiphr = backpack.Encrypt("АБРАМОВ").Split(new char[] { ' ' },
                                                                 StringSplitOptions.RemoveEmptyEntries);
@@ -55,6 +56,17 @@ namespace Tests.CryptographicTest
             else
                 testStatus = false;
             Assert.IsTrue(testStatus);
+        }
+        [TestMethod]
+        public void TestOfUnEncrypt()
+        {
+            string defaultUnShiphr = "АБРАМОВ";
+            BackpackWorker backpack = new BackpackWorker(270, 31, 271, 420, new BigInteger[] { 2, 3, 6, 13, 27, 52, 105, 210 },
+                                                         new BigInteger[] { 62, 93, 186, 403, 417, 352, 315, 210 });
+            string unShiphr = backpack.UnEncrypt(backpack.Encrypt("АБРАМОВ").Split(new char[] { ' ' },
+                StringSplitOptions.RemoveEmptyEntries).Select(x => new BigInteger(int.Parse(x))).ToArray());
+
+            Assert.IsTrue(defaultUnShiphr==unShiphr);
         }
     }
 }
