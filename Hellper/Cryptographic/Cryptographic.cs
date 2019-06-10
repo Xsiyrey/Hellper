@@ -194,7 +194,6 @@ namespace Hellper.Cryptographic
     }
     public class BackpackWorker
     {
-        BigInteger wigth;
         BigInteger[] k;
         BigInteger[] openK;
         BigInteger m;
@@ -202,11 +201,8 @@ namespace Hellper.Cryptographic
         BigInteger n1;
         BigInteger[] c;
 
-        public BackpackWorker(BigInteger wigth)
+        public BackpackWorker()
         {
-            if (wigth < 0)
-                throw new Exception("Wigth mast be grate then zero");
-            this.wigth = wigth;
             k = SimpleNumberWorker.SupperUpperElements(8);
             m = k.SumOfBigInt() + 4;
             n = 2;
@@ -219,11 +215,10 @@ namespace Hellper.Cryptographic
                 openK[i] = BigInteger.ModPow(k[i] * n, 1, m);
             }
         }
-        public BackpackWorker(BigInteger wigth,BigInteger n,BigInteger n1,BigInteger m,BigInteger[] k,BigInteger[] openK)
+        public BackpackWorker(BigInteger n,BigInteger n1,BigInteger m,BigInteger[] k,BigInteger[] openK)
         {
             if (k.Length != 8 || openK.Length != 8)
                 throw new Exception("Keys length mast be = 8");
-            this.wigth = wigth;
             this.m = m;
             this.n = n;
             this.n1 = n1;
@@ -312,6 +307,10 @@ namespace Hellper.Cryptographic
         private bool N1Validate(BigInteger n1)
         {
             return BigInteger.ModPow(n * n1, 1, m) == 1;
+        }
+        public override string ToString()
+        {
+            return $"{m} {n} {n1}";
         }
     }
 }
