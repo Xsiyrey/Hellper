@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Hellper.Algorithm
 {
-    class FileWorker
+    public class FileWorker
     {
         /// <summary>
         /// Получение файлов из каталога и подкаталогов
@@ -15,7 +15,7 @@ namespace Hellper.Algorithm
         /// <param name="path">Путь</param>
         /// <param name="searchPattern">Паттерн</param>
         /// <returns></returns>
-        private IEnumerable<string> FindFilesPath(string path, string searchPattern)
+        public static IEnumerable<string> FindFilesPath(string path, string searchPattern)
         {
             string[] files;
             try
