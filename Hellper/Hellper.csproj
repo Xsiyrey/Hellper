@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Algorithm\FileWorker.cs" />
     <Compile Include="Alpabet\Alphabet.cs" />
     <Compile Include="Cryptographic\Cryptographic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
