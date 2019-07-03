@@ -181,16 +181,6 @@ namespace Hellper.Cryptographic
             while (!SimpleNumberWorker.IsMutuallyPrimary(k, p - 1))
                 k = random.Next(2, (int)p - 1);
         }
-
-        //static explicit operator object(object element)
-        //{
-
-        //    return;
-        //}
-        //static implicit operator object(object element)
-        //{
-        //    return;
-        //}
     }
     public class BackpackWorker
     {
