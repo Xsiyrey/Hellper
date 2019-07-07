@@ -10,17 +10,19 @@ namespace Hellper.Algorithm
     public class FileWorker
     {
         /// <summary>
-        /// Получение файлов из каталога и подкаталогов
+        /// Get files from catalog
         /// </summary>
-        /// <param name="path">Путь</param>
-        /// <param name="searchPattern">Паттерн</param>
+        /// <param name="path">Path</param>
+        /// <param name="searchPattern">Pattern</param>
         /// <returns></returns>
         public static IEnumerable<string> FindFilesPath(string path, string searchPattern)
         {
-            string[] files;
+            List<string> files = new List<string>();
             try
             {
-                files = Directory.GetFiles(path, searchPattern);
+                string[] searchPatterns = searchPattern.Split('|');
+                foreach (string sp in searchPatterns)
+                    files.AddRange(Directory.GetFiles(path, sp));
             }
             catch (UnauthorizedAccessException)
             {
