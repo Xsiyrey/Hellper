@@ -58,10 +58,6 @@ namespace Hellper.Numbers
             {
                 while (bigs.SumOfBigInt() >= element)
                 {
-                    if (element==25)
-                    {
-                        int a = 4;
-                    }
                     element++;
                 }
                 bigs[i] = element;
