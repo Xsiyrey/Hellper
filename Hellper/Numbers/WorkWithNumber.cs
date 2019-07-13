@@ -17,9 +17,23 @@ namespace Hellper.Numbers
             if (num == 2) return true;
             if (num % 2 == 0) return false;
 
-            for (BigInteger i = 3; i <= num / 2; i += 2)
+            BigInteger limit = num/2;
+            for (BigInteger i = 3; i <= limit; i += 2)
             {
                 if (num % i == 0) return false;
+            }
+
+            return true;
+        }
+        public static bool IsPrime<T>(T num) where T: struct
+        {
+            if ((dynamic)num == 2) return true;
+            if ((dynamic)num % 2 == 0) return false;
+
+            T limit = (dynamic)num/2;
+            for (T i = (dynamic)3; i <= (dynamic)limit; i += (dynamic)2)
+            {
+                if ((dynamic)num % i == 0) return false;
             }
 
             return true;
