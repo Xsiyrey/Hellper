@@ -26,7 +26,7 @@ namespace Hellper.Algorithm
                 foreach (string sp in searchPatterns)
                     files.AddRange(Directory.GetFiles(path, sp));
             }
-            catch (UnauthorizedAccessException)
+            catch (Exception)
             {
                 yield break;
             }
