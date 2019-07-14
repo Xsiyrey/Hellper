@@ -17,6 +17,8 @@ namespace Hellper.Algorithm
         /// <returns></returns>
         public static IEnumerable<string> FindFilesPath(string path, string searchPattern)
         {
+            if (!Directory.Exists(path))
+                yield break;
             List<string> files = new List<string>();
             try
             {
