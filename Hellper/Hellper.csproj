@@ -11,7 +11,7 @@
     <AssemblyName>Hellper</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <Deterministic>true</Deterministic>
+    <Deterministic>false</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -31,6 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Numerics" />
@@ -46,8 +48,14 @@
     <Compile Include="Alpabet\Alphabet.cs" />
     <Compile Include="Cryptographic\Cryptographic.cs" />
     <Compile Include="Matrix\WorkWithMatrix.cs" />
+    <Compile Include="Models\BaseSettingParams.cs" />
+    <Compile Include="Models\ISettingParams.cs" />
+    <Compile Include="Models\Settings.cs" />
+    <Compile Include="MVVM\ViewModels\BaseViewModel.cs" />
+    <Compile Include="MVVM\ViewModels\ButtonViewCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Numbers\WorkWithNumber.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

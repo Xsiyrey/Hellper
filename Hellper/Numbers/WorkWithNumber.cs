@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Numerics;
 
 namespace Hellper.Numbers
@@ -17,7 +16,7 @@ namespace Hellper.Numbers
             if (num == 2) return true;
             if (num % 2 == 0) return false;
 
-            BigInteger limit = num/2;
+            BigInteger limit = num / 2;
             for (BigInteger i = 3; i <= limit; i += 2)
             {
                 if (num % i == 0) return false;
@@ -25,12 +24,12 @@ namespace Hellper.Numbers
 
             return true;
         }
-        public static bool IsPrime<T>(T num) where T: struct
+        public static bool IsPrime<T>(T num) where T : struct
         {
             if ((dynamic)num == 2) return true;
             if ((dynamic)num % 2 == 0) return false;
 
-            T limit = (dynamic)num/2;
+            T limit = (dynamic)num / 2;
             for (T i = (dynamic)3; i <= (dynamic)limit; i += (dynamic)2)
             {
                 if ((dynamic)num % i == 0) return false;
@@ -87,12 +86,12 @@ namespace Hellper.Numbers
             }
             return sum;
         }
-        public static BigInteger FindPrimitive(BigInteger P)
+        public static BigInteger FindPrimitive(BigInteger p)
         {
             BigInteger primitive = 2;
-            for (BigInteger i = 2; i < P - 1; i++)
+            for (BigInteger i = 2; i < p - 1; i++)
             {
-                if (IsPrimitiveRoot(i, P))
+                if (IsPrimitiveRoot(i, p))
                 {
                     primitive = i;
                     break;
@@ -104,16 +103,16 @@ namespace Hellper.Numbers
         /// Сheck for primitive root for numbers
         /// </summary>
         /// <param name="el"></param>
-        /// <param name="P"></param>
+        /// <param name="p"></param>
         /// <returns></returns>
-        private static bool IsPrimitiveRoot(BigInteger el, BigInteger P)
+        private static bool IsPrimitiveRoot(BigInteger el, BigInteger p)
         {
             BigInteger sum = 0;
-            for (int i = 0; i < P - 1; i++)
+            for (int i = 0; i < p - 1; i++)
             {
-                sum += BigInteger.ModPow(el, i, P);
+                sum += BigInteger.ModPow(el, i, p);
             }
-            if (sum == el * P)
+            if (sum == el * p)
                 return true;
             return false;
         }

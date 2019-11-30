@@ -24,7 +24,7 @@ namespace Hellper.Algorithm
             {
                 string[] searchPatterns = searchPattern.Split('|');
                 foreach (string sp in searchPatterns)
-                    files.AddRange(Directory.GetFiles(path, sp));
+                    files.AddRange(Directory.GetFiles(path, sp.Trim()));
             }
             catch (Exception)
             {
