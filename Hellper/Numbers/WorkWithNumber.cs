@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Numerics;
+using System.Text.RegularExpressions;
 
 namespace Hellper.Numbers
 {
@@ -116,5 +117,11 @@ namespace Hellper.Numbers
                 return true;
             return false;
         }
+
+        public static bool IsNumber(string number)
+        {
+            return isNumberRegex.IsMatch(number);
+        }
+        private static Regex isNumberRegex = new Regex("[^0-9]+");
     }
 }
