@@ -1,6 +1,7 @@
 ﻿using System;
-using System.Collections;
 using System.Linq;
+using System.Reflection;
+using Hellper.Attributes;
 
 namespace Hellper.Models
 {
@@ -8,37 +9,30 @@ namespace Hellper.Models
     {
         public BaseSettingParams()
         {
-
+            LoadParams();
         }
-
-        protected object[] LoadParams()
+        public void LoadParams()
         {
-            Type t = GetType();
-            var property = t.GetProperties(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance)
-                .Where(x => x.Name.Contains("params"))
-                .Select(x => Init("", x.Name))
-                    .ToArray();
-            ParamsEl = new ArrayList(property);
-            return null;
+            ParamsEl = GetParams();
         }
-        public ArrayList ParamsEl { get; set; }
-        private ArrayList paramsEl;
-
-        public static Param<T> Init<T>(T param, string paramName)
+        public IParam<dynamic>[] GetParams()
         {
-            return new Param<T>()
-            {
-                ParamValue = param,
-                ParamType = typeof(T),
-                ParamName = paramName
-            };
+            return GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance)
+                        .Where(x => x.IsDefined(typeof(SettingsPropertyAttribute)))
+                        .Select(x => new Param<dynamic>(x.GetValue(this), x.PropertyType, x.Name))
+                            .ToArray();
         }
-    }
-
-    public class Param<T>
-    {
-        public T ParamValue { get; set; }
-        public Type ParamType { get; set; }
-        public String ParamName { get; set; }
+        public bool ChangeProperty<T>(T value, string propertyName)
+        {
+            var property = GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance)
+                .Where(x => x.Name == propertyName).FirstOrDefault();
+            if (property == null)
+                return false;
+            property.SetValue(this, value);
+            var param = ParamsEl.Where(x => x.ParamName == propertyName).FirstOrDefault();
+            param.ParamValue = value;
+            return true;
+        }
+        public IParam<dynamic>[] ParamsEl { get; set; }
     }
 }
