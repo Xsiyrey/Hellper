@@ -149,6 +149,7 @@
     <Compile Include="Alpabet\Alphabet.cs" />
     <Compile Include="Attributes\SettingsPropertyAttribute.cs" />
     <Compile Include="Cryptographic\Cryptographic.cs" />
+    <Compile Include="DataBase\DataBaseConnectionTester.cs" />
     <Compile Include="Exceptions\NullArgumentException.cs" />
     <Compile Include="Exceptions\PageNotFoundedException.cs" />
     <Compile Include="FormControllers\PageController.cs" />
