@@ -152,10 +152,11 @@
     <Compile Include="DataBase\DataBaseConnectionTester.cs" />
     <Compile Include="Exceptions\NullArgumentException.cs" />
     <Compile Include="Exceptions\PageNotFoundedException.cs" />
+    <Compile Include="Extensions\EnumerableExtension.cs" />
     <Compile Include="ExternFunc\NativeMethods.cs" />
     <Compile Include="FormControllers\PageController.cs" />
     <Compile Include="Models\BaseSettingParams.cs" />
-    <Compile Include="Models\EnumController.cs" />
+    <Compile Include="Extensions\EnumExtension.cs" />
     <Compile Include="Models\IParam.cs" />
     <Compile Include="Models\ISettingParams.cs" />
     <Compile Include="Models\Param.cs" />

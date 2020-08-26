@@ -2,7 +2,7 @@ using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 
-namespace Tests.EnumController
+namespace Tests.ExtensionsTest
 {
     enum EnumForTest
     {
@@ -17,9 +17,9 @@ namespace Tests.EnumController
         [TestMethod]
         public void TestEnum()
         {
-            var a = Hellper.Models.EnumController.GetListOfValues<EnumForTest>(EnumForTest.Two);
-            var b = Hellper.Models.EnumController.GetListOfValues<EnumForTest>(x=>(int)x>2);
-            var c = Hellper.Models.EnumController.GetListOfValues<EnumForTest>(x=>!new List<EnumForTest>(){EnumForTest.Two}.Contains(x));
+            var a = Hellper.Extensions.EnumExtension.GetListOfValues<EnumForTest>(EnumForTest.Two);
+            var b = Hellper.Extensions.EnumExtension.GetListOfValues<EnumForTest>(x=>(int)x>2);
+            var c = Hellper.Extensions.EnumExtension.GetListOfValues<EnumForTest>(x=>!new List<EnumForTest>(){EnumForTest.Two}.Contains(x));
 
             Assert.IsTrue(a.SequenceEqual(c) && b.SequenceEqual(new EnumForTest[] {EnumForTest.First,EnumForTest.Stop}));
         }
