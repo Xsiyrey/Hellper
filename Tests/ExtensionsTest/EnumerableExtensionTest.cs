@@ -28,25 +28,6 @@ namespace Tests.ExtensionsTest
             Assert.IsTrue(result1 && result2);
         }
 
-        [TestMethod]
-        public void TestForEachFunction()
-        {
-            var a = new List<TestDataClass>()
-            {
-                new TestDataClass{Number = 1},
-                new TestDataClass{Number = 2},
-                new TestDataClass{Number = 3}
-            }.AsEnumerable();
-
-            var result1 = a.Sum(x => x.Number) == 6;
-
-            var b = a.ForEach(x => x.Number.ToString() + "Hello");
-
-            var result2 = b.All(x => x.Contains("Hello"));
-
-            Assert.IsTrue(result1 && result2);
-        }
-
         private class TestDataClass
         {
             public int Number { get; set; }
