@@ -13,13 +13,5 @@ namespace Hellper.Extensions
             foreach (var s in source)
                 action(s);
         }
-
-        public static IEnumerable<TResult> ForEach<TSource,TResult>(this IEnumerable<TSource> source, Func<TSource,TResult> func)
-        {
-            List<TResult> result = new List<TResult>();
-            foreach (var s in source)
-                result.Add(func(s));
-            return result;
-        }
     }
 }
