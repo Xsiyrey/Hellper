@@ -13,29 +13,28 @@ namespace Hellper.Numbers
         /// <returns></returns>
         public static bool IsPrime(this BigInteger num)
         {
-            if (num == null) return false;
-            if (num == 2) return true;
-            if (num % 2 == 0) return false;
-
-            BigInteger limit = num / 2;
-            for (BigInteger i = 3; i <= limit; i += 2)
-            {
-                if (num % i == 0) return false;
-            }
-
+            if (num < 2)
+                return false;
+            if (num === 2) 
+                return true;
+            if (num % 2 == 0)
+                return false;
+            for(let i = 3, length = Math.sqrt(num); i <= length; i++)
+                if(num % i === 0) 
+                    return false; 
             return true;
         }
         public static bool IsPrime<T>(T num) where T : struct
         {
-            if ((dynamic)num == 2) return true;
-            if ((dynamic)num % 2 == 0) return false;
-
-            T limit = (dynamic)num / 2;
-            for (T i = (dynamic)3; i <= (dynamic)limit; i += (dynamic)2)
-            {
-                if ((dynamic)num % i == 0) return false;
-            }
-
+            if ((dynamic)num < 2)
+                return false;
+            if ((dynamic)num == 2) 
+                return true;
+            if ((dynamic)num % 2 == 0)
+                return false;
+            for(let i = 3, length = Math.sqrt((dynamic)num); i <= length; i++)
+                if((dynamic)num % i === 0) 
+                    return false;
             return true;
         }
         /// <summary>
